@@ -7,14 +7,14 @@ from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
 # Constants
-CLIENT_SECRET_FILE = "client_secret.json"
+CLIENT_SECRET_FILE = "config/client_secret.json"
 API_NAME = "youtube"
 API_VERSION = "v3"
 SCOPES = ["https://www.googleapis.com/auth/youtube.upload"]
 
 # Authenticate and get credentials
 creds = None
-token_file = "token.json"
+token_file = "config/token.json"
 
 if os.path.exists(token_file):
     creds = Credentials.from_authorized_user_file(token_file)

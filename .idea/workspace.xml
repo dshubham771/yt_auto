@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="09f0bf4f-ba66-4bbb-9632-18a00474f17c" name="Changes" comment="delete video files" />
+    <list default="true" id="09f0bf4f-ba66-4bbb-9632-18a00474f17c" name="Changes" comment="delete video files">
+      <change afterPath="$PROJECT_DIR$/utils/common_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_secret.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/client_secret.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/download-video.py" beforeDir="false" afterPath="$PROJECT_DIR$/download-video.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/downloads/merge_vid.py" beforeDir="false" afterPath="$PROJECT_DIR$/merge_vid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/downloads/music.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/downloads/output-vz.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/token.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/token.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yt-upload.py" beforeDir="false" afterPath="$PROJECT_DIR$/yt-upload.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,6 +24,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -29,10 +40,24 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GithubDefaultAccount">
-    <option name="defaultAccountId" value="cf2f7bd6-e555-48d8-bb32-550b72faf0a3" />
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="main" />
+      </list>
+    </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_HOME_DIR$/plugins/python/helpers/typeshed/stdlib/os/__init__.pyi" root0="SKIP_INSPECTION" />
+    <setting file="file://$USER_HOME$/Library/Python/3.9/lib/python/site-packages/pytube/streams.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$USER_HOME$/Library/Python/3.9/lib/python/site-packages/youtube_dl/downloader/common.py" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -46,6 +71,9 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
+    "Python.common.executor": "Run",
+    "Python.common_utils.executor": "Run",
+    "Python.download-video.executor": "Debug",
     "Python.fetch-video-info-2.executor": "Run",
     "Python.fetch-video-info.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -60,7 +88,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -68,12 +96,17 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/downloads/temp" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/config" />
+    </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-PY-241.14494.241" />
+        <option value="bundled-python-sdk-0509580d9d50-28c9f5db9ffe-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.14494.241" />
       </set>
     </attachedChunks>
   </component>
@@ -87,6 +120,8 @@
       <updated>1713533242280</updated>
       <workItem from="1713533243671" duration="2537000" />
       <workItem from="1713547601112" duration="4186000" />
+      <workItem from="1714115272039" duration="45000" />
+      <workItem from="1714115339311" duration="8476000" />
     </task>
     <task id="LOCAL-00001" summary="delete video files">
       <option name="closed" value="true" />
@@ -117,8 +152,27 @@
     <MESSAGE value="delete video files" />
     <option name="LAST_COMMIT_MESSAGE" value="delete video files" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$USER_HOME$/Library/Python/3.9/lib/python/site-packages/youtube_dl/downloader/common.py</url>
+          <line>334</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$USER_HOME$/Library/Python/3.9/lib/python/site-packages/youtube_dl/downloader/common.py</url>
+          <line>333</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/yt_auto$fetch_video_info_2.coverage" NAME="fetch-video-info-2 Coverage Results" MODIFIED="1713551853260" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/yt_auto$fetch_video_info.coverage" NAME="fetch-video-info Coverage Results" MODIFIED="1713551973707" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/yt_auto$fetch_video_info_2.coverage" NAME="fetch-video-info-2 Coverage Results" MODIFIED="1713551853260" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/yt_auto$common_utils.coverage" NAME="common_utils Coverage Results" MODIFIED="1714144301541" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
+    <SUITE FILE_PATH="coverage/yt_auto$common.coverage" NAME="common Coverage Results" MODIFIED="1714116913060" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Library/Python/3.9/lib/python/site-packages/youtube_dl/downloader" />
+    <SUITE FILE_PATH="coverage/yt_auto$download_video.coverage" NAME="download-video Coverage Results" MODIFIED="1714144621196" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
