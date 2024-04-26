@@ -1,10 +1,8 @@
 import os
 import shutil
 import uuid
-
 from pytube import YouTube
 import ffmpeg
-
 from utils.common_utils import move_file
 
 base_download_path = "downloads"
@@ -55,7 +53,8 @@ def download_youtube_video(video_url):
             combined_stream = ffmpeg.output(stream1, stream2, final_video_file_name, vcodec="copy", acodec="copy")
             ffmpeg.run(combined_stream, overwrite_output=True)
 
-        move_file(final_video_file_name, os.path.join(os.getcwd(), base_download_path, "final", final_video_file_name.split("/")[-1]))
+        move_file(final_video_file_name,
+                  os.path.join(os.getcwd(), base_download_path, "final", final_video_file_name.split("/")[-1]))
         shutil.rmtree(download_path)
         print(f"deleted {download_path} folder")
 
