@@ -1,64 +1,56 @@
-import os
-import google.auth
-from google.auth.transport.requests import Request
-from google.oauth2.credentials import Credentials
-from google_auth_oauthlib.flow import InstalledAppFlow
+import pickle
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
-# Constants
-CLIENT_SECRET_FILE = "config/client_secret.json"
-API_NAME = "youtube"
-API_VERSION = "v3"
-SCOPES = ["https://www.googleapis.com/auth/youtube.upload"]
 
-# Authenticate and get credentials
-creds = None
-token_file = "config/token.json"
+def upload_video_with_thumbnail(video_file_path, title, description, tags, thumbnail_path):
+    try:
+        with open("config/credentials.pickle", "rb") as token:
+            creds = pickle.load(token)
+    except FileNotFoundError:
+        print("Credentials not found")
+        return
+    print("Credentials loaded successfully!")
+    youtube = build("youtube", "v3", credentials=creds)
 
-if os.path.exists(token_file):
-    creds = Credentials.from_authorized_user_file(token_file)
+    # Prepare request body
+    request_body = {
+        "snippet": {
+            "title": title,
+            "description": description,
+            "tags": tags,
+            "categoryId": "10",  # Music category
+        },
+        "status": {
+            "privacyStatus": "public"
+        },
+    }
 
-if not creds or not creds.valid:
-    if creds and creds.expired and creds.refresh_token:
-        creds.refresh(Request())
-    else:
-        flow = InstalledAppFlow.from_client_secrets_file(CLIENT_SECRET_FILE, SCOPES)
-        creds = flow.run_local_server(port=0)
+    print("Uploading video...")
+    media_file = MediaFileUpload(video_file_path, chunksize=-1, resumable=True)
+    upload_request = youtube.videos().insert(
+        part="snippet,status", body=request_body, media_body=media_file
+    )
 
-    with open(token_file, "w") as token:
-        token.write(creds.to_json())
+    response = None
+    while response is None:
+        status, response = upload_request.next_chunk()
+        if status:
+            print(f"Uploaded {int(status.progress() * 100)}%")
 
-# Create YouTube API service
-youtube = build(API_NAME, API_VERSION, credentials=creds)
+    video_id = response["id"]
+    (youtube.thumbnails().set(videoId=video_id,
+                              media_body=MediaFileUpload(thumbnail_path, mimetype='image/jpeg', resumable=True))
+     .execute())
 
-# Upload video
-video_file_path = "sample_video.mp4"  # Replace with the path to your video file
+    print(f'Video uploaded! Video ID: {response["id"]}')
+
+
+# Usage example
+video_path = "/Users/shubhamdamkondwar/Documents/PycharmProjects/yt_auto/downloads/final/Tum Se.mp4"
+thumbnail_path = "/Users/shubhamdamkondwar/Documents/PycharmProjects/yt_auto/downloads/final/tum_se_thumbnail.jpg"
 title = "Testing Upload with API"
 description = "This was a test"
-tags = ["tag1", "tag2"]
+tags = ["music", "bollywood", "bollywood music", "bollywood songs", "hindi songs", "hindi music", "hindi gaane"]
 
-request_body = {
-    "snippet": {
-        "title": title,
-        "description": description,
-        "tags": tags,
-        "categoryId": "22",  # You can find the category ID for your video category
-    },
-    "status": {
-        "privacyStatus": "public"  # You can set the privacy status (private, public, unlisted)
-    },
-}
-
-media_file = MediaFileUpload(video_file_path, chunksize=-1, resumable=True)
-upload_request = youtube.videos().insert(
-    part="snippet,status", body=request_body, media_body=media_file
-)
-
-response = None
-while response is None:
-    status, response = upload_request.next_chunk()
-    if status:
-        print(f"Uploaded {int(status.progress() * 100)}%")
-
-print(f'Video uploaded! Video ID: {response["id"]}')
+upload_video_with_thumbnail(video_path, title, description, tags, thumbnail_path)
